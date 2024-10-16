@@ -10,8 +10,11 @@ import { ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import Order from './pages/order/Order';
 import Myorders from './pages/Myorders/Myorders';
+import { useState } from 'react';
 
 function App() {
+  const[Token,setToken] = useState("")
+  const[userId,setUserId] = useState("")
   return (
     <>
     <div>

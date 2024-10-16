@@ -76,6 +76,22 @@ cursor: pointer;
     align-items: center;
 }
 
+.favourites{
+    position: absolute;
+    translate:10px 180px; 
+    background-color:white; 
+    height:35px;
+    width:35px;
+    border-radius:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.favourites span{
+    font-size:26px;
+    color: rgb(81, 81, 81);
+}
 .Add{
     width:35px;
     height:35px;

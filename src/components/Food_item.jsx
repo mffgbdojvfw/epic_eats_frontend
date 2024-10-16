@@ -8,7 +8,7 @@ import { StoreContext } from '../context/StoreContext'
 
 const Food_item = ({key,id,name,description,price,image}) => {
 
- const {cartitems,addtoCart,removefromCart,url} = useContext(StoreContext)
+ const {cartitems,addtoCart,removefromCart,url,favorite} = useContext(StoreContext)
 
 
 
@@ -19,7 +19,11 @@ const Food_item = ({key,id,name,description,price,image}) => {
       <div className="food-item-img-container">
         <img  className="food-item-image" src={url+"/images/"+image} alt="" />
       </div>
-      
+<div className="favourites" onClick={()=>favorite(id)}>
+<span class="material-symbols-outlined">
+favorite
+</span>
+</div>
 <div className='count-cont'>{
   !cartitems[id]?<img className="add" src={assets.add_icon_white} alt="" onClick={()=>addtoCart(id)} />:
   <div className='food-item-count'>

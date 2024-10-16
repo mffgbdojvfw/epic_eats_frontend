@@ -6,6 +6,7 @@ import { assets } from '../../new_images/assets'
 import Navbar from '../../components/Navbar'
 import Footer from "../../components/Footer"
 import {Link,useNavigate} from "react-router-dom"
+import { toast } from 'react-toastify'
 
 const Cart = () => {
   const { food_list, cartitems, removefromCart, addtoCart , getTotalAmount,token,url} = useContext(StoreContext)
@@ -14,20 +15,24 @@ const navigate = useNavigate()
   useEffect(()=>{
     if(!token){
         navigate("/signin")
+        toast("You have to signed in!")
     }
+    
 },[token])
 
-useEffect(()=>{
-  navigate("/Cart")
-},[])
+// useEffect(()=>{
+//   navigate("/Cart")
+// },[])
 
 useLayoutEffect(() => {
   window.scrollTo(0, 0);
 }, []);
   return (
     <>
+    <div>
+    <Navbar />
+    </div>
       <div className='cart'>
-        <Navbar />
         <div className="cart-items">
           <div className="cart-title">
             <p>Items</p>

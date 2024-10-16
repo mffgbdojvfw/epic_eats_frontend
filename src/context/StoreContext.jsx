@@ -14,34 +14,10 @@ const StoreContextProvider = (props) =>{
     const [cartitems,setcartitems] = useState(JSON.parse(localStorage.getItem("cartitems")) || {})
     const [userId, setUserId] = useState(localStorage.getItem('userId') || '');
     const[food_list,setfood_list] = useState([])
+    const[fav,setfav]  = useState([])
       
   const url = `http://localhost:4300`
-    // const addtoCart = async(ind)=>{
-    //     if(!cartitems[ind]){
-    //       setcartitems((prev)=>({...prev,[ind]:1}))
-    //     }
-    //     else{
-    //       setcartitems((prev)=>({...prev,[ind]:prev[ind]+1}))
-    //     }
-    //     console.log("Token: ", token);
-
-    //     if (token) {
-    //       try {
-    //         // Log the payload being sent
-    //         console.log("Sending payload: ", { ind });
-      
-    //         // Make the POST request to add the item to the cart
-    //         const response = await axios.post(url + "/api/cart/add", { ind }, { headers: { token } });
-    //         // Log the response from the server
-    //         console.log("Add to cart response: ", response.data);
-    //       } catch (error) {
-    //         // Log any errors that occur during the request
-    //         console.error("Error adding to cart: ", error.response ? error.response.data : error.message);
-    //       }
-    //     } else {
-    //       console.error("No token available");
-    //     }
-    //     }
+  
         
     const addtoCart = async (ind) => {
       if (!cartitems[ind]) {
@@ -89,6 +65,24 @@ const StoreContextProvider = (props) =>{
           const formattedTotalPrice = total.toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 2 });
           return formattedTotalPrice;
       };
+      
+      const favorite = (ind) => {
+        setfav((prevFav) => {
+          // Add new favorite to the array
+          const newItem = cartitems[ind];
+          // Check if the item is already in the array
+          if (prevFav.includes(newItem)) {
+            return prevFav; // Item already in favorites
+          }
+          return [...prevFav, newItem]; // Add new item to favorites
+        });
+      };
+ 
+
+
+
+
+
       const getplainAmount = () => {
         let total = 0;
         try {
@@ -144,7 +138,9 @@ setfood_list(response.data.data)
         }
 
 
-       
+       useEffect(() => {
+          localStorage.setItem("favourites", JSON.stringify(fav));
+      }, [fav]);
 
       useEffect(() => {
         localStorage.setItem("token", token);
@@ -184,7 +180,8 @@ address,
 setaddress,
 handleLogout,
 storedCartItems,
-
+favorite,
+fav
     }
     return (
         <StoreContext.Provider value = {contextValue}>

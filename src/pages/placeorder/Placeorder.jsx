@@ -167,6 +167,8 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+
+
 const Placeorder = () => {
     const { getTotalAmount, token, cartitems, food_list, url ,setaddress,getplainAmount} = useContext(StoreContext)
     const [data, setdata] = useState({
@@ -325,7 +327,6 @@ useEffect(()=>{
                     </div>
                 </div>
             </div>
-
         </>
     )
 }

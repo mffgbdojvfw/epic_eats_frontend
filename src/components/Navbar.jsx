@@ -9,7 +9,7 @@ import orders from "./shopping-bag.png"
 import logout from "./logout.png"
 
 
-const Navbar = ({ onNavClick }) => {
+const Navbar = ({ scrollToExploreMenu, scrollToDownloadApp, scrollToFooter }) => {
   const [isOpen, setIsOpen] = useState(false);
  const {token,setToken,handleLogout} = useContext(StoreContext) 
  console.log(token)
@@ -44,14 +44,14 @@ const Navbar = ({ onNavClick }) => {
         </button>
       </div>
       <div className={`navbar-menu ${isOpen ? 'is-active' : ''}`}>
-        <ul>
+        <ul className='nav-icons'>
           <li><NavLink to="/">Home</NavLink></li>
-          <li><NavLink to="/menu">Menu</NavLink></li>
-          <li><NavLink to="/Services">Services</NavLink></li>
-          <li><NavLink to="/Contact">Contact</NavLink></li>
+          <li><NavLink onClick={scrollToFooter}>Menu</NavLink></li>
+          <li><NavLink onClick={scrollToDownloadApp}>Services</NavLink></li>
+          {/* <li><NavLink onClick={scrollToFooter}>Contact</NavLink></li> */}
         </ul>
         <ul className='sec'>
-        <li><NavLink to="/search"><span class="material-symbols-outlined">search</span></NavLink></li>
+        {/* <li><NavLink to="/search"><span class="material-symbols-outlined">search</span></NavLink></li> */}
         <li><NavLink to="/fav"><span class="material-symbols-outlined">favorite</span></NavLink></li>
         <li><NavLink to="/Cart"><span class="material-symbols-outlined">shopping_cart</span></NavLink></li>
         {/* <li className='NavLink'><NavLink to="/" ><span class="material-symbols-outlined">person</span></NavLink></li> */}

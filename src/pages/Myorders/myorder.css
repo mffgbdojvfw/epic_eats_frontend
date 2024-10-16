@@ -2,6 +2,9 @@ body{
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.my-orders{
+  margin-top:130px;
+}
 .my-orders-order{
     display: flex;
     align-items: center;
